@@ -2,7 +2,7 @@ import Distributions
 import Simulator
 
 # CONSTANTS
-LAST = 10000
+LAST = 100000
 START = 0
 # PARAMETERS (change these...)
 meanArrival = 2
@@ -19,12 +19,12 @@ sum = [0, 0, 0, 0]  # [delay, wait, service, inter_arrival]
 
 while index < LAST:
     index += 1
-    arrival = Simulator.getArrival(meanArrival)
+    arrival = Simulator.get_arrival(meanArrival)
     if arrival < departure:
         delay = departure - arrival
     else:
         delay = 0
-    service = Simulator.getService(lowerBoundUniform, upperBoundUniform)
+    service = Simulator.get_uniform(lowerBoundUniform, upperBoundUniform)
     wait = delay + service
     departure = arrival + wait
     sum[0] += delay
